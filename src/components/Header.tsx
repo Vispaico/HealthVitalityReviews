@@ -6,10 +6,10 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#' },
+    { name: 'Home', href: '/' },
     { name: 'Reviews', href: '#featured' },
     { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: 'mailto:contact@healthvitalityreviews.com' }
   ];
 
   return (
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.name === 'Home' ? '/' : item.href}
+                  href={item.href}
                   className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
