@@ -1,15 +1,36 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Mail, Gift } from 'lucide-react';
+import { Mail, Gift, Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { supabase } from '@/lib/supabaseClient';
 
 const EmailSignup: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email submitted:', email);
-    setEmail('');
+    setLoading(true);
+    setMessage('');
+    setIsError(false);
+
+    const { error } = await supabase.functions.invoke('subscribe', {
+      body: JSON.stringify({ email }),
+    });
+
+    setLoading(false);
+
+    if (error) {
+      setMessage('An error occurred. Please try again.');
+      setIsError(true);
+      console.error('Error invoking function:', error);
+    } else {
+      setMessage('Success! Check your email for the guide.');
+      setIsError(false);
+      setEmail('');
+    }
   };
 
   return (
@@ -23,7 +44,7 @@ const EmailSignup: React.FC = () => {
           </h2>
           
           <p className="text-xl text-gray-600 mb-8">
-            Get my free '7-Day Vitality Boost Guide' and stay updated on new reviews, 
+            Get my free 'Daily Small Steps to near Immortality' guide and stay updated on new reviews, 
             exclusive discounts, and health tips that actually work.
           </p>
 
@@ -38,13 +59,21 @@ const EmailSignup: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10"
                   required
+                  disabled={loading}
                 />
               </div>
-              <Button type="submit" className="bg-green-600 hover:bg-green-700 px-8">
-                Get Free Guide
+              <Button type="submit" className="bg-green-600 hover:bg-green-700 px-8" disabled={loading}>
+                {loading ? <Loader2 className="animate-spin" /> : 'Get Free Guide'}
               </Button>
             </div>
           </form>
+
+          {message && (
+            <div className={`mt-4 flex items-center justify-center ${isError ? 'text-red-600' : 'text-green-600'}`}>
+              {isError ? <XCircle className="mr-2" /> : <CheckCircle className="mr-2" />}
+              {message}
+            </div>
+          )}
 
           <div className="mt-6 flex items-center justify-center space-x-6 text-sm text-gray-500">
             <span>✓ No spam ever</span>
