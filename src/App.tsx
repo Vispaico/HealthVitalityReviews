@@ -12,6 +12,7 @@ import Product4 from "./pages/Product4";
 import Product5 from "./pages/Product5";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import WeightLossGuide from "./pages/WeightLossGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/product5" element={<Product5 />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/how-i-lost-10kg-in-5-weeks" element={<WeightLossGuide />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

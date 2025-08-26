@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import { products } from '@/data/products';
+import { Link } from 'react-router-dom';
 
 const FeaturedProducts: React.FC = () => {
   return (
@@ -26,9 +27,11 @@ const FeaturedProducts: React.FC = () => {
           <p className="text-gray-600 mb-6">
             Want to know how i lost 10 Kg in 5 weeks without hating my life?
           </p>
-          <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-            Get My 'The Simple Way How i Lost 10 Kg in 5 Weeks' Guide
-          </button>
+          <Link to="/how-i-lost-10kg-in-5-weeks">
+            <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+              Get My 'The Simple Way How i Lost 10 Kg in 5 Weeks' Guide
+            </button>
+          </Link>
         </div>
       </div>
     </section>
