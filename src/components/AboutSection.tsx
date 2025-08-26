@@ -14,8 +14,7 @@ const AboutSection: React.FC = () => {
             
             <p className="text-lg text-gray-600">
               I'm Neil, a dad of 3 and health enthusiast sharing honest reviews of supplements 
-              I've researched and tested. My goal? Help you make informed choices without the hype. 
-              Follow my 30-day challenge to see how I'm building this site from scratch!
+              I've researched and tested. My goal? Help you make informed choices without the hype.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -44,7 +43,7 @@ const AboutSection: React.FC = () => {
 
           <div className="relative">
             <img
-              src="https://d64gsuwffb70l.cloudfront.net/68abed73aa0bb892dd2fc10b_1756097971032_7318f0f3.webp"
+              src="https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?q=80&w=3299&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Neil - Health supplement reviewer"
               className="w-full h-auto rounded-lg shadow-xl"
             />
