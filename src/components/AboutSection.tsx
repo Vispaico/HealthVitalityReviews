@@ -35,10 +35,12 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Follow My Journey on Facebook
-            </Button>
+            <a href="https://www.facebook.com/profile.php?id=61579938118174" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-blue-600 hover:bg-blue-700">
+                <ExternalLink className="h-4 w-4 mr-2" />
+                Follow My Journey on Facebook
+              </Button>
+            </a>
           </div>
 
           <div className="relative">
