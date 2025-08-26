@@ -24,10 +24,10 @@ const FeaturedProducts: React.FC = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">
-            Want more detailed comparisons and exclusive insights?
+            Want to know how i lost 10 Kg in 5 weeks without hating my life?
           </p>
           <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-            Get My Free Supplement Guide
+            Get My 'The Simple Way How i Lost 10 Kg in 5 Weeks' Guide
           </button>
         </div>
       </div>

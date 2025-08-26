@@ -37,7 +37,7 @@ const AboutSection: React.FC = () => {
 
             <Button className="bg-blue-600 hover:bg-blue-700">
               <ExternalLink className="h-4 w-4 mr-2" />
-              Follow My Journey on X
+              Follow My Journey on Facebook
             </Button>
           </div>
 

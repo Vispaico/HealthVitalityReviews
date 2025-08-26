@@ -5,17 +5,28 @@ import { Resend } from 'https://esm.sh/resend@3.4.0';
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 const GUIDE_URL = 'https://healthvitalityreviews.com/downloads/Daily%20Small%20Steps%20to%20near%20Immortality.pdf';
 
-serve(async (req) => {
-  const { email } = await req.json();
+// Define CORS headers
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*', // Or 'https://www.healthvitalityreviews.com' for better security
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
 
-  if (!email) {
-    return new Response(JSON.stringify({ error: 'Email is required' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    });
+serve(async (req) => {
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
   }
 
   try {
+    const { email } = await req.json();
+
+    if (!email) {
+      return new Response(JSON.stringify({ error: 'Email is required' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const supabase = createClient(
       Deno.env.get('PROJECT_URL') ?? '',
       Deno.env.get('ANON_KEY') ?? ''
@@ -27,7 +38,7 @@ serve(async (req) => {
       console.error('Error inserting email into Supabase:', error);
       return new Response(JSON.stringify({ error: 'Error saving email' }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
@@ -46,13 +57,13 @@ serve(async (req) => {
 
     return new Response(JSON.stringify({ message: 'Successfully subscribed!' }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Error:', error);
     return new Response(JSON.stringify({ error: 'An unexpected error occurred' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 });

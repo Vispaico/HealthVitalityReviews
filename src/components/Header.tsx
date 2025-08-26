@@ -33,11 +33,7 @@ const Header: React.FC = () => {
               ))}
             </div>
           </nav>
-
-          <Button className="hidden md:block bg-green-600 hover:bg-green-700">
-            Get Free Guide
-          </Button>
-
+          
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -61,9 +57,6 @@ const Header: React.FC = () => {
                   {item.name}
                 </a>
               ))}
-              <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">
-                Get Free Guide
-              </Button>
             </div>
           </div>
         )}
